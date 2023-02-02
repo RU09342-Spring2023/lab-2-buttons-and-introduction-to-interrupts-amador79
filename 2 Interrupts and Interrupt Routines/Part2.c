@@ -45,7 +45,6 @@ int main(void)
 
     while(1)
     {
-        // @TODO You will need to modify this code to change between blinking the Red LED or the Green LED
         if (ToggleEnable){
             P1OUT ^= BIT0;                  // Set P1.0 to alternating
             P6OUT &= ~BIT6;                 // Set P6.6 to off
@@ -62,7 +61,6 @@ int main(void)
 #pragma vector=PORT2_VECTOR
 __interrupt void Port_2(void)
 {
-    // @TODO You might need to modify this based on your approach to the lab
     P2IFG &= ~BIT3;                         // Clear P1.3 IFG
     ToggleEnable ^= 0x01;                   // Enable if the toggle should be active
 }
