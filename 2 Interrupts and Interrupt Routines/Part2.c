@@ -27,7 +27,8 @@ int main(void)
     P1OUT &= ~BIT0;                         // Clear P1.0 output latch for a defined power-on state
     P1DIR |= BIT0;                          // Set P1.0 to output direction
 
-    // @TODO You need to add in the configuration for the Green LED
+    P6OUT &= ~BIT6;                         // Clear P6.6 output latch for a defined power-on state
+    P6DIR |= BIT6;                          // Set P6.6 to output direction
 
     P2OUT |= BIT3;                          // Configure P2.3 as pulled-up
     P2REN |= BIT3;                          // P2.3 pull-up register enable
@@ -45,10 +46,14 @@ int main(void)
     while(1)
     {
         // @TODO You will need to modify this code to change between blinking the Red LED or the Green LED
-        if (ToggleEnable)
-            P1OUT ^= BIT0;                  // P1.0 = toggle
-        else
-            P1OUT &= ~BIT0;                 // Set P1.0 to 0
+        if (ToggleEnable){
+            P1OUT ^= BIT0;                  // Set P1.0 to alternating
+            P6OUT &= ~BIT6;                 // Set P6.6 to off
+        }
+        else{
+            P6OUT ^= BIT6;                 // Set P6.6 to alternating
+            P1OUT &= ~BIT0;                // Set P1.0 to off
+        }
         __delay_cycles(100000);
     }
 }
