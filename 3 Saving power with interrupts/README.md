@@ -74,6 +74,9 @@ Then load up Energy Trace and perform the similar capture of Power with the LED 
 1. What is causing the bias/baseline in the polling example to be higher than the interrupt example.
 2. Even with the LED unplugged, why is there still power increases when you press the button?
 
-
 # Screenshots and Answers to Questions
-**Replace this section with your screenshots of Energy Trace and provide some reasoning as to Questions 1 and 2 in the Power consumption of the Interrupts Section.**
+
+
+
+1. The CPU is running in the background while polling is being done. The CPU sits there and checks the pins over and over again. Interupt completely turns the CPU off    unless the interupt port is detencted, and then the cpu turns on.
+2. The power increase comes from the button being tied directly to ground. When the button is pressed, the VCC port runs into ground conducting electricity.
