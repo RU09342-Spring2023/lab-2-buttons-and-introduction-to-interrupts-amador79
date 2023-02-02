@@ -32,11 +32,15 @@ int main(void)
 
     while(1)
     {
-        if (P2IN & BIT3)            // If S2 (P2.3) is pressed
-            P6OUT ^= BIT6;          // Toggle P6.6
-        if (P4IN & BIT1)            // If S1 (P4.1) is pressed
-            P1OUT ^= BIT0;          // Toggle P1.0
-        __delay_cycles(100000);             // Delay for 100000*(1/MCLK)=0.1s
+        if ((P2IN & BIT3) == 0)            // If S2 (P2.3) is not pressed
+            P6OUT ^= BIT6;                 // Toggle P6.6
+        if ((P4IN & BIT1) == 0)            // If S1 (P4.1) is not pressed
+            P1OUT ^= BIT0;                 // Toggle P1.0
+        else{
+            P6OUT &= ~BIT6;                // Turns green LED off when nothing is pressed
+            P1OUT &= ~BIT0;                // Turns red LED off when nothing is pressed
+        }
+        __delay_cycles(100000);            // Delay for 100000*(1/MCLK)=0.1s
     }
 
 
