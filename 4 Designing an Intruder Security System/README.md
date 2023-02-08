@@ -10,3 +10,4 @@ Issue with the code that I would like to fix:
 
 An issue my code is having currently is that if the 2.3 button is pressed while any of the delays from the blinking LEDs is happening, the button input will not register until the delay is over.
 I beleive this can be fixed by using interrupts instead of polling but I do not fully understand interrupts yet and was more comftorable with using polling, so this is the best I could do.
+:)
